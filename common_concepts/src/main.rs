@@ -1,3 +1,5 @@
+pub mod loops;
+
 #[allow(unused_variables, unused_assignments, dead_code, unused_mut)]
 
 fn main() {
@@ -27,4 +29,6 @@ fn main() {
 
     let spaces = "   ";
     let spaces = 3; // ✅
+
+    loops::loops();
 }
