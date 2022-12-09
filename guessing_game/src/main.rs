@@ -9,7 +9,7 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
     // uncomment the line below to see the generated secret number
-    println!("🤫 Secret Number : {secret_number}");
+    // println!("🤫 Secret Number : {secret_number}");
 
     loop {
         println!("{}", "Please input a guess.".blue());
