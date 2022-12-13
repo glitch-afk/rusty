@@ -1,4 +1,5 @@
 use colored::*;
+use sha1::Digest;
 use std::{
     env,
     error::Error,
@@ -7,6 +8,8 @@ use std::{
 };
 
 const SHA1_HEX_STRING_LENGTH: usize = 40;
+
+// hash -> fbec17cb2fcbbd1c659b252230b48826fc563788
 
 fn main() -> Result<(), Box<dyn Error>> {
     println!("{}", "SHA1 CRACKER".yellow());
@@ -28,9 +31,15 @@ fn main() -> Result<(), Box<dyn Error>> {
     let reader = BufReader::new(&wordlist_file);
 
     for line in reader.lines() {
-        let line = line?.trim().to_string();
-        println!("{}", line);
+        let line = line?;
+        let common_password = line.trim();
+        if hash_to_crack == &hex::encode(sha1::Sha1::digest(common_password.as_bytes())) {
+            println!("Password Found: {}", &common_password);
+            return Ok(());
+        }
     }
+
+    println!("Password not found in wordlist :(");
 
     Ok(())
 }
