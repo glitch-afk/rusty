@@ -39,7 +39,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
     }
 
-    println!("Password not found in wordlist :(");
+    println!("{}", "Password not found in wordlist :(".red());
 
     Ok(())
 }
